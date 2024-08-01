@@ -1,0 +1,81 @@
+import java.util.Random;
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+
+        int x, i;
+        Random random = new Random();
+        Scanner input = new Scanner(System.in);
+        int z=1;
+        int score=0;
+        while(z==1) {
+            int ans = random.nextInt(1, 100);
+            int update= random.nextInt(1,10);
+            int a=(ans-update)/2;
+            int b=(ans-update)/3;
+            int c=ans+update;
+            int d=ans+2*update;
+            int e=ans/2;
+            int f=(ans+4)/5;
+            int g=ans;
+            int k;
+            if(score%2==0){
+                k=a;
+                a=b;
+                b=c;
+                c=d;
+                d=e;
+                e=f;
+                f=g;
+                g=k;
+            }
+            else if(score%3==0){
+                k=a;
+                a=c;
+                c=e;
+                e=g;
+                g=b;
+                b=d;
+                d=k;
+            }
+            else if(score%5==0){
+                k=a;
+                a=g;
+                g=f;
+                f=e;
+                e=d;
+                d=c;
+                c=b;
+                b=k;
+            }
+            else{
+                a=a;
+                b=b;
+                c=c;
+                d=d;
+                e=e;
+                f=f;
+                g=g;
+            }
+            System.out.printf("choose a number from \n%d\n%d\n%d\n%d\n%d\n%d\n%d\n",a,b,c,d,g,e,f);
+            for (i = 1; i < 4; i++) {
+                System.out.printf("enter %d guess\n", i);
+                x= input.nextInt();
+                if (x == ans) {
+                    System.out.println("CONGRATULATIONS! CORRECT ANSWER\nLETS PLAY AGAIN");
+                    score++;
+                    System.out.printf("SCORE IS %d\n",score);
+                    break;
+                } else if (x < ans) {
+                    System.out.println("TRY AGAIN!\nHINT: NUMBER ENTERED IS SMALLER THAN THE TARGET NUMBER");
+                } else {
+                    System.out.println("TRY AGAIN!\nHINT: NUMBER ENTERED IS LARGER THAN THE TARGET NUMBER");
+                }
+            }
+            if (i == 4) {
+                System.out.printf("OPPS! NUMBER IS %d\nLETS PLAY AGAIN\n", ans);
+            }
+
+        }
+    }
+}
